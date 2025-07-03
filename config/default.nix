@@ -1,11 +1,20 @@
 {
   imports = [
-    "settings/keymap.nix"
-  ];
+    ./settings/keymap.nix
+    # ./plugins/bufferline.nix
+    # ./plugins/colorizer.nix
+    # ./plugins/firenvim.nix
+    # ./plugins/fugitive.nix
+    # ./plugins/oil.nix
+    # ./plugins/surround.nix
+    # ./plugins/telescope.nix
+    # ./plugins/treesitter.nix
+  ] ++ (map (name: ./plugins/${name}) (builtins.attrNames (builtins.readDir ./plugins)));
 
-  global.mapleader = " ";
+  globals.mapleader = " ";
 
   opts = {
+    updatetime = 100;
     tabstop = 2;
     softtabstop = 2;
     shiftwidth = 2;
@@ -15,6 +24,7 @@
     autoindent = true;
 
     cursorline = true;
+    termguicolors = true;
 
     incsearch = true;
     hlsearch = true;
@@ -31,7 +41,16 @@
 
     shada = null;
     shadafile = null;
+    undofile = true; # Persistent undo
 
     wildmenu = true;
+  };
+
+  colorschemes.catppuccin = {
+    enable = true;
+    settings = {
+      flavour = "macchiato";
+      term_colors = true;
+    };
   };
 }
