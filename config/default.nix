@@ -1,14 +1,6 @@
 {
   imports = [
     ./settings/keymap.nix
-    # ./plugins/bufferline.nix
-    # ./plugins/colorizer.nix
-    # ./plugins/firenvim.nix
-    # ./plugins/fugitive.nix
-    # ./plugins/oil.nix
-    # ./plugins/surround.nix
-    # ./plugins/telescope.nix
-    # ./plugins/treesitter.nix
   ] ++ (map (name: ./plugins/${name}) (builtins.attrNames (builtins.readDir ./plugins)));
 
   globals.mapleader = " ";
