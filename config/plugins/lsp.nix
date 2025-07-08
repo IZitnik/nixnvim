@@ -13,9 +13,7 @@
       };
       hls = {
         enable = true;
-        settings = {
-          installGhc = true;
-        };
+        installGhc = true;
       };
       nixd = {
         enable = true;
