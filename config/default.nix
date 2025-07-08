@@ -1,7 +1,10 @@
-{
+let 
+  pluginImports = 
+    with builtins; map (name: ./plugins/${name}) (attrNames (readDir ./plugins));
+in {
   imports = [
     ./settings/keymap.nix
-  ] ++ (map (name: ./plugins/${name}) (builtins.attrNames (builtins.readDir ./plugins)));
+  ] ++ pluginImports;
 
   globals.mapleader = " ";
 

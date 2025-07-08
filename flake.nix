@@ -6,8 +6,16 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, nixvim, flake-utils, ... }@inputs:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixvim,
+      flake-utils,
+      ...
+    }@inputs:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         lib = nixpkgs.lib // nixvim.lib.${system};
         pkgs = import nixpkgs { inherit system; };
@@ -30,5 +38,6 @@
           # Lets you run `nix run .` to start nixvim
           default = nvim;
         };
-      });
+      }
+    );
 }
