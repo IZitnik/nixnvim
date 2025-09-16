@@ -44,6 +44,9 @@
           };
         };
       };
+      java-language-server = {
+        enable = true;
+      };
     };
     keymaps = {
       silent = true;
