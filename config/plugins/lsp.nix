@@ -44,7 +44,7 @@
           };
         };
       };
-      java-language-server = {
+      jdtls = { # java_language_server = {
         enable = true;
       };
     };
