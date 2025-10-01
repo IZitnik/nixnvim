@@ -89,11 +89,11 @@
           action = "open_float";
           desc = "Line Diagnostics";
         };
-        "[d" = {
+        "<leader>j" = {
           action = "goto_next";
           desc = "Next Diagnostic";
         };
-        "]d" = {
+        "<leader>k" = {
           action = "goto_prev";
           desc = "Previous Diagnostic";
         };
