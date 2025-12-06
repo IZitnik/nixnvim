@@ -13,7 +13,7 @@
       };
       hls = {
         enable = true;
-        installGhc = true;
+        installGhc = false;
       };
       nixd = {
         enable = true;
