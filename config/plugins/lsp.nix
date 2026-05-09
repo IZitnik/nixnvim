@@ -1,10 +1,12 @@
-{ lib, pkgs, ... }:
-
-{
+{ pkgs, ... }:
+let 
+  flake_expr = "builtins.getFlake (toString /persistent/nixos)";
+in {
   plugins.lsp = {
     enable = true;
     inlayHints = true;
     servers = {
+      texlab.enable = true;
       html = {
         enable = true;
       };
@@ -18,11 +20,15 @@
       nixd = {
         enable = true;
         settings = {
+          formatting.command = [ "${pkgs.nixfmt}/bin/nixfmt" ];
+          options = {
+            nixos.expr        = "${flake_expr}.nixosConfigurations.NixHadex.options";
+            # home_manager.expr = "${flake_expr}.nixosConfigurations.NixHadex.config.home-manager.users.Tekk";
+            flake_parts.expr  = "let flake = ${flake_expr}; in flake.debug.options // flake.currentSystem.options";
+          };
+
           nixpkgs = {
             expr = "import nixpkgs { }";
-          };
-          formatting = {
-            command = [ "${lib.getExe pkgs.alejandra}" ];
           };
         };
       };
